@@ -27,7 +27,7 @@ export default function Imgsection() {
         <Image  src={bonus} alt="bonus" className="hidden lg:block w-[50%]"/>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:mt-[25px] lg:gap-[10px] lg:h-[300px]">
+      <div className="flex flex-col lg:flex-row lg:mt-[25px] lg:gap-[10px] ">
         <div className="flex gap-[5px] w-full mt-[20px] lg:w-[60%] lg:mt-[0px] ">
           <div className="flex-1">
             <Image

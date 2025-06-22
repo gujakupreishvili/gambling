@@ -24,8 +24,8 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-[5px]">
-          <IconButton icon={bellIcon} alt="bell icon" />
-          <IconButton icon={userIcon} alt="user icon" />
+          <IconButton icon={bellIcon} alt="bell icon" width="40" height="40" />
+          <IconButton icon={userIcon} alt="user icon" width="40" height="40"  />
         </div>
       </div>
     </header>
