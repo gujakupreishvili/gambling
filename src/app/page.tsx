@@ -1,7 +1,12 @@
+import Header from "./components/header/header";
+import Main from "./components/main/main";
 
 
 export default function Home() {
   return (
-    <h1 className=" text-[20px] font-poppins font-extralight">hello</h1>
+    <>
+    <Header />
+    <Main />
+    </>
   );
 }

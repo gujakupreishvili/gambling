@@ -19,4 +19,7 @@
   --font-mono: var(--font-geist-mono);
   --font-poppins: Poppins
 }
+body{
+  background-color: #1C2E3D;
+}
 
