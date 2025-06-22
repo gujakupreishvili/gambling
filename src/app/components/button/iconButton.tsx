@@ -4,6 +4,8 @@ import Image, { StaticImageData } from "next/image";
 type IconButtonProps = {
   icon: StaticImageData;
   alt: string;
+  width : string,
+  height: string;  
   className?: string;
   onClick?: () => void;
 };
@@ -11,6 +13,8 @@ type IconButtonProps = {
 export default function IconButton({
   icon,
   alt,
+  height,
+  width,
   className = "",
   onClick,
 }: IconButtonProps) {
@@ -18,7 +22,8 @@ export default function IconButton({
     <button
       onClick={onClick}
       aria-label={alt}
-      className={`w-[40px] h-[40px] bg-[#1C2E3D] border border-[#273344] rounded-[5px] flex items-center justify-center hover:bg-[#2A3B4D] transition-colors ${className}`}
+      style={{ width: `${width}px`, height: `${height}px` }}
+      className={` bg-[#1C2E3D] border border-[#273344] rounded-[5px] flex items-center justify-center hover:bg-[#2A3B4D] transition-colors ${className}`}
     >
       <Image src={icon} alt={alt} />
     </button>
