@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Imgsection from './ImgSection/imgsection'
 import SearchSection from './searchSection/searchSection'
 import Content from './content/content'
@@ -11,7 +11,9 @@ export default function Main() {
     <>
     <main className='flex flex-col justify-center max-w-[1980px] mx-[3%] lg:mx-[17.7%]'>
     <Imgsection />
-    <SearchSection />
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchSection />
+    </Suspense>
     <Content />
     <ProviderSerction />
     <PaymentSection />

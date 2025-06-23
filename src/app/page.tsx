@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import Main from "./components/main/main";
@@ -8,7 +9,9 @@ export default function Home() {
   return (
     <>
     <Header />
-    <Main />
+    <Suspense fallback={<div>Loading page...</div>}>
+      <Main />
+    </Suspense>
     <Sidebar />
     <Footer />
     </>
