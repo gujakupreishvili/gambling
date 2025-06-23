@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams, usePathname,  } from "next/navigation";
 import arrowDownIcon from "../../../../../public/assets/icons/arroDownIcon.svg";
 import IconButton from "../../button/iconButton";
 import diceIcon from "../../../../../public/assets/icons/diceIcon.svg";
@@ -14,7 +14,6 @@ type listProps = {
 };
 
 export default function List({ icon, text, items = [], paramKey }: listProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
