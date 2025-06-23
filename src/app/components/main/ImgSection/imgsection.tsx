@@ -28,35 +28,35 @@ export default function Imgsection() {
       </div>
 
       <div className="flex flex-col lg:flex-row lg:mt-[25px] lg:gap-[10px] ">
-        <div className="flex gap-[5px] w-full mt-[20px] lg:w-[60%] lg:mt-[0px] ">
+        <div className="flex gap-[5px] w-full mt-[20px] lg:w-[73%] lg:mt-[0px] ">
           <div className="flex-1">
             <Image
               src={freeSpin}
               alt="free spin"
-              className="w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] object-cover rounded-[3px] lg:h-[250]"
+              className="w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] object-cover rounded-[3px] lg:h-[210px]"
             />
           </div>
           <div className="flex-1">
             <Image
               src={cashBack}
               alt="cash back"
-              className="w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] object-cover rounded-[3px] lg:h-[250px]"
+              className="w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] object-cover rounded-[3px] lg:h-[210px]"
             />
           </div>
         </div>
 
-        <div className="flex  mt-[5px] gap-[5px] items-center lg:w-[35%] lg:hidden">
+        <div className="flex  mt-[5px] gap-[5px] items-center lg:w-[27%] lg:hidden">
           <Image src={bigTime} alt="bigTime" className="w-[25%] rounedd-[3px] lg:h-[120px]" />
           <Image src={aviator} alt="aviator" className="w-[25%] rounedd-[3px]" />
           <Image src={sport} alt="sport" className="w-[25%] rounedd-[3px]" />
           <Image src={octoplay} alt="octoplay" className="w-[25%] rounded-[3px]" />
         </div>
-        <div className="hidden lg:flex flex-col  gap-[10px] w-[40%] h-[250px]">
-          <div className="flex gap-[10px]">
+        <div className="hidden lg:flex flex-col gap-3 h-[200px]">
+          <div className="flex gap-3 flex-1 h-1/2">
             <Image  src={drobwin} alt="dropwin" className="w-[50%]"/>
             <Image  src={wager} alt="wager" className="w-[50%]"/>
           </div>
-          <div className="flex gap-[10px]">
+          <div className="flex gap-3 flex-1 h-1/2">
             <Image src={octoplayDesktop} alt="octoplay" className="w-[50%]" />
             <Image  src={bigTimeDesktop} alt="bigTimedesktop" className="w-[50%]"/>
           </div>

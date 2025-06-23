@@ -1,6 +1,6 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import Image from "next/image";
 import searchIcon from "../../../../../public/assets/icons/searchIcon.svg";
 import lobyIcon from "../../../../../public/assets/categoriesIcon/lobyIcon.svg";
@@ -14,65 +14,53 @@ import List from "./list";
 export default function SearchSection() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const router = useRouter();
-
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([
-    "loby",
-  ]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<string>("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(["loby"]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const categoryParam = searchParams.get("category");
-    const searchParam = searchParams.get("search");
-
+    const categoryParam = searchParams.get('category');
     if (categoryParam) {
-      setSelectedCategories(categoryParam.split(","));
+      setSelectedCategories(categoryParam.split(','));
     }
-
-    if (searchParam) {
-      setSearchQuery(searchParam);
-      setDebouncedSearchQuery(searchParam);
-    }
+    const searchParam = searchParams.get('search') || '';
+    setSearchTerm(searchParam);
   }, [searchParams]);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
-    }, 300);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchQuery]);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (selectedCategories.length > 0 && !selectedCategories.includes("loby")) {
-      params.set("category", selectedCategories.join(","));
+      params.set('category', selectedCategories.join(','));
     } else {
-      params.delete("category");
-    }
-
-    if (debouncedSearchQuery.length >= 3) {
-      params.set("search", debouncedSearchQuery);
-    } else {
-      params.delete("search");
+      params.delete('category');
     }
 
     const newUrl = params.toString()
       ? `${pathname}?${params.toString()}`
       : pathname;
 
-    router.replace(newUrl, { scroll: false });
-  }, [
-    selectedCategories,
-    debouncedSearchQuery,
-    pathname,
-    searchParams,
-    router,
-  ]);
+    window.history.pushState({}, '', newUrl);
+  }, [selectedCategories, pathname, searchParams]);
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (searchTerm.length >= 3) {
+        params.set('search', searchTerm);
+      } else {
+        params.delete('search');
+      }
+
+      const newUrl = params.toString()
+        ? `${pathname}?${params.toString()}`
+        : pathname;
+
+      window.history.pushState({}, '', newUrl);
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm, pathname, searchParams]);
 
   const toggleCategory = (name: string) => {
     setSelectedCategories((prev) => {
@@ -80,7 +68,7 @@ export default function SearchSection() {
         return prev.filter((cat) => cat !== name);
       } else {
         if (prev.includes("loby") && name !== "loby") {
-          return prev.filter((cat) => cat !== "loby").concat(name);
+          return prev.filter(cat => cat !== "loby").concat(name);
         } else if (name === "loby") {
           return ["loby"];
         } else {
@@ -90,10 +78,6 @@ export default function SearchSection() {
     });
   };
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
-
   return (
     <div className="flex flex-col mt-[10px]">
       <div className="flex w-full">
@@ -101,48 +85,37 @@ export default function SearchSection() {
           <Image src={searchIcon} alt="search icon" className="mr-[10px]" />
           <input
             type="text"
-            placeholder="Search your game (min 3 characters)"
-            value={searchQuery}
-            onChange={handleSearchChange}
+            placeholder="Search your game"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="h-[40px] w-full outline-none text-[#C1C9E5] placeholder:text-[#C1C9E5] font-poppins font-medium bg-transparent"
           />
         </div>
         <div className="lg:flex items-start gap-[5px] hidden w-[40%]">
-          <List
-            icon={collectionsIcon}
-            text="Collections"
+          <List 
+            icon={collectionsIcon} 
+            text="Collections" 
             items={Collections}
             paramKey="collections"
           />
-          <List
-            icon={providerIcon}
-            text="Provider"
+          <List 
+            icon={providerIcon} 
+            text="Provider" 
             items={Providers}
             paramKey="providers"
           />
         </div>
       </div>
-      {debouncedSearchQuery.length >= 3 && (
-        <p className="text-[#C1C9E5] text-sm mt-1">
-          Searching for: "{debouncedSearchQuery}"
-        </p>
-      )}
 
       <div className="mt-[15px] mb-[10px] w-full overflow-x-auto">
         <div className="flex gap-[10px] whitespace-nowrap">
           <button
             onClick={() => toggleCategory("loby")}
             className={`flex items-center gap-[6px] p-[10px] rounded-[5px] min-w-fit
-              ${
-                selectedCategories.includes("loby")
-                  ? "bg-[#10202D]"
-                  : "bg-[#223444] border border-[#273847]"
-              }`}
+              ${selectedCategories.includes("loby") ? "bg-[#10202D]" : "bg-[#223444] border border-[#273847]"}`}
           >
             <Image src={lobyIcon} alt="loby" width={24} height={24} />
-            <p className="text-white text-[14px] font-poppins font-medium">
-              Loby
-            </p>
+            <p className="text-white text-[14px] font-poppins font-medium">Loby</p>
           </button>
 
           {categories.map((category) => (
@@ -150,11 +123,9 @@ export default function SearchSection() {
               key={category.name}
               onClick={() => toggleCategory(category.name)}
               className={`flex items-center gap-[5px] p-[10px] rounded-[5px] min-w-fit
-                ${
-                  selectedCategories.includes(category.name)
-                    ? "bg-[#10202D]"
-                    : "bg-[#223444] border border-[#273847]"
-                }`}
+                ${selectedCategories.includes(category.name)
+                  ? "bg-[#10202D]"
+                  : "bg-[#223444] border border-[#273847]"}`}
             >
               <Image
                 src={category.icon}
@@ -171,15 +142,15 @@ export default function SearchSection() {
       </div>
 
       <div className="flex items-start gap-[5px] lg:hidden">
-        <List
-          icon={collectionsIcon}
-          text="Collections"
+        <List 
+          icon={collectionsIcon} 
+          text="Collections" 
           items={Collections}
           paramKey="collections"
         />
-        <List
-          icon={providerIcon}
-          text="Provider"
+        <List 
+          icon={providerIcon} 
+          text="Provider" 
           items={Providers}
           paramKey="providers"
         />
