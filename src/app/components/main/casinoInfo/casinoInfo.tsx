@@ -3,7 +3,7 @@ import React from "react";
 export default function CasinoInfo() {
   return (
     <div
-      className="relative flex flex-col p-4 mt-[16px]  rounded-[4px]"
+      className="relative flex flex-col p-4 mt-[16px]  rounded-[4px] mb-[20px] lg:mb-[34px]"
       style={{
         background:
           "linear-gradient(180deg, #0b1a23 0%, rgba(60, 75, 90, 0.6) 100%)",
@@ -19,12 +19,12 @@ export default function CasinoInfo() {
         <p className="text-white text-sm font-poppins leading-6">
           CASINO is your premier online casino platform, offering a world-class
           gaming experience with hundreds of top-tier casino games, exclusive
-          bonuses, and lightning-fast payouts. Whether you're a fan of classic
+          bonuses, and lightning-fast payouts. Whether youre a fan of classic
           slots, live dealer games, table games, or jackpot progressives, CASINO
           delivers everything you need for high-stakes excitement and non-stop
           fun — all from the comfort of your home or mobile device. Join
           thousands of players worldwide who trust CASINO for its secure, fair,
-          and licensed gameplay. We partner with the industry's most reputable
+          and licensed gameplay. We partner with the industrys most reputable
           software
         </p>
       </div>

@@ -12,7 +12,7 @@ export default function PaymentSection() {
   return (
     <div className='flex flex-col bg-[#10202D] border-[1px] border-[#273344] rounded-[10px]  items-center py-[15px] lg:flex-row  lg:px-[25px]'>
       <h2 className='text-[20px] font-poppins font-bold text-white mb-[15px] text-center lg:text-start lg:w-[405px]'>
-        You don't have Crypto? No problem
+        You don t have Crypto? No problem
       </h2>
 
       <div className='flex flex-wrap gap-[15px] items-center mb-[15px]  justify-center w-full '>
