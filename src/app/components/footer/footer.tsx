@@ -1,6 +1,7 @@
 import React from "react";
 import FooterUpper from "./footerUpper";
 import FooterLower from "./footerLower";
+import FooterMobile from "./footerMobile";
 
 
 export default function Footer() {
@@ -10,6 +11,7 @@ export default function Footer() {
         <FooterUpper />
         <FooterLower />
       </div>
+        <FooterMobile />
     </footer>
   );
 }

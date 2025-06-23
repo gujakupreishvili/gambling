@@ -1,5 +1,8 @@
 import React from "react";
 import FooterSection from "./footerSection";
+import  affiliate from "../../../../public/assets/footerImg/affiliate.svg"
+import refer from "../../../../public/assets/footerImg/refer.svg"
+import Image from "next/image";
 
 const games = ["Slots", "Live Dealers", "Table Games", "Video Poker", "Crash"];
 const promotions = [
@@ -80,8 +83,8 @@ export default function FooterUpper() {
           <FooterSection title="Customer Care" items={customerCare} />
 
           <section className="flex flex-col gap-4 flex-1 items-center justify-center">
-            <div className="w-[135px] h-[75px] bg-amber-50 rounded-[5px]"></div>
-            <div className="w-[135px] h-[75px] bg-amber-50 rounded-[5px]"></div>
+            <Image src={refer} alt="refer" className="w-[135px] h-[75px] rounded-[5px]" />
+            <Image  src={affiliate} alt="affiliate" className="w-[135px] h-[75px] rounded-[5px]"/>
           </section>
         </div>
       </div>

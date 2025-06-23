@@ -1,5 +1,10 @@
 import React from "react";
 import FooterIconsRow from "./footerIconRow";
+import ageIcon from "../../../../public/assets/footerIcon/18_icon.svg"
+import anjIcon from "../../../../public/assets/footerIcon/anj_icon.svg"
+import gaIcon from "../../../../public/assets/footerIcon/ga_icon.svg"
+import gcIcon from "../../../../public/assets/footerIcon/gc_icon.svg"
+import Image from "next/image";
 
 export default function FooterLower() {
   return (
@@ -17,9 +22,10 @@ export default function FooterLower() {
         </p>
 
         <div className="images-div flex items-center justify-center sm:justify-end gap-3 flex-1">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="w-[35px] h-[35px] bg-amber-500"></div>
-          ))}
+          <Image src={anjIcon} alt="" />
+          <Image src={gcIcon} alt="" />
+          <Image src={gaIcon} alt="" />
+          <Image src={ageIcon} alt="" />
         </div>
       </div>
 
@@ -27,7 +33,7 @@ export default function FooterLower() {
         <p className="text-[#66788C] w-full text-center">
           GAMBLING CAN BE ADDICTIVE. PLAY RESPONSIBLY!
         </p>
-        <p className="text-[#66788C] mt-5 w-full text-center text-[12px] max-sm:text-[11px]">
+        <p className="text-[#66788C] mt-5 w-full text-center text-[12px] max-sm:text-[11px] mb-[12px]">
           CASINO casino is operated by CASINO B.V., ensuring a secure and fair
           gaming environment for all players. We strictly adhere to all
           regulatory requirements to maintain transparency and fairness. Our
