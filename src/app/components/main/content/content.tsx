@@ -28,7 +28,7 @@ export default function Content() {
   const isFilterActive = categoryParam || providerParam || searchParam;
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       {isFilterActive ? (
         <Section 
           res={res} 
